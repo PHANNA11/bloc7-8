@@ -1,4 +1,5 @@
 import 'package:bloc_management/bloc/counter_bloc.dart';
+import 'package:bloc_management/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -79,6 +80,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   '${state.counter}',
                   style: Theme.of(context).textTheme.headline4,
                 ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SecondScreen(),
+                          ));
+                    },
+                    child: const Text('next page'))
               ],
             ),
           );
@@ -96,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           FloatingActionButton(
             onPressed: () {
-              //print(context.read<CounterBloc>().add(IncrementEvent()));
               context.read<CounterBloc>().add(IncrementEvent());
             },
             tooltip: 'Increment',
